@@ -34,7 +34,14 @@ export class Board {
   }
 
   tick() {
-    let prevY = this.posY; this.posY = this.posY + 1; this.boardArr[prevY][this.posX] = "."; this.boardArr[this.posY][this.posX] = "X";
+    let prevY = this.posY; 
+    this.posY = this.posY + 1; 
+    this.boardArr[prevY][this.posX] = "."; 
+    this.boardArr[this.posY][this.posX] = "X";
+  }
+
+  hasFalling() {
+    return this.posY < this.height;
   }
 
   // string representation of the board
