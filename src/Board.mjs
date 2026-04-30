@@ -25,9 +25,12 @@ export class Board {
 
   // drop a block from the top middle position
   drop() {
+    if (this.posX || this.posY) {
+      throw new Error("already falling");
+    }
     this.posX = Math.floor(this.width / 2);
     this.posY = 0;
-    this.boardArr[this.posY][this.posX] = "X";
+    this.boardArr[this.posY][this.posX] = "X";      
   }
 
   tick() {
