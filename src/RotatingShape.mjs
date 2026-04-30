@@ -10,6 +10,15 @@ export class RotatingShape {
   }
 
   static fromString(input) {
-    constructor(input.split("\n"));
+    return constructor(input.split("\n"));
+  }
+
+  toString() {
+    let result = "";
+    for (let i = 0; i < this.shapeArr.length; i++) {
+      for (let j = 0; j < this.shapeArr[i].length; j++) { result += this.shapeArr[i][j]; }
+      result += "\n";
+    }
+    return result;
   }
 }
