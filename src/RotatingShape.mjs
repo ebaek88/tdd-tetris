@@ -19,6 +19,15 @@ export class RotatingShape {
     return new RotatingShape(rows);
   }
 
+  rotateRight() {
+    const rotatedArr = [];
+    for(let i = 0; i < this.size; i++) {
+      rotatedArr.push([]);
+    }
+
+    this.shapeArr = rotatedArr;
+  }
+
   toString() {
     let result = "";
     for (let i = 0; i < this.shapeArr.length; i++) {
