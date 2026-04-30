@@ -2,6 +2,8 @@ export class Board {
   width;
   height;
   boardArr;
+  posX; // X-coordinate of the block. Starts from the left with 0.
+  posY; // Y-coordinate of the block. Starts from the top with 0.
 
   constructor(width, height) {
     this.width = width;
@@ -23,7 +25,13 @@ export class Board {
 
   // drop a block from the top middle position
   drop() {
-    this.boardArr[0][Math.floor(this.width / 2)] = "X";
+    this.posX = Math.floor(this.width / 2);
+    this.posY = 0;
+    this.boardArr[this.posY][this.posX] = "X";
+  }
+
+  tick() {
+    let prevY = this.posY; this.posY = this.posY + 1; this.boardArr[prevY][this.posX] = "."; this.boardArr[this.posY][this.posX] = "X";
   }
 
   // string representation of the board
