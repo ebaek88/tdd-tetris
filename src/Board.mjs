@@ -10,6 +10,7 @@ export class Board {
     this.initialize();
   }
 
+  // initialize an empty board
   initialize() {
     for (let i = 0; i < this.height; i++) {
       const row = [];
@@ -20,6 +21,12 @@ export class Board {
     }
   }
 
+  // drop a block from the top middle position
+  drop() {
+    this.boardArr[0][Math.floor(this.width / 2)] = "X";
+  }
+
+  // string representation of the board
   toString() {
     let result = "";
     for(let i = 0; i < this.boardArr.length; i++) {
