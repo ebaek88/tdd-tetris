@@ -7,6 +7,7 @@ export class Board {
     this.width = width;
     this.height = height;
     this.boardArr = [];
+    this.initialize();
   }
 
   initialize() {
@@ -20,6 +21,12 @@ export class Board {
   }
 
   toString() {
-    return `...\n...\n...\n`;
+    let result = "";
+    for(let i = 0; i < this.boardArr.length; i++) {
+      result += this.boardArr[i].join("");
+      result += "\n";
+    }
+
+    return result;
   }
 }
