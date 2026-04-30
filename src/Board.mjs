@@ -36,8 +36,10 @@ export class Board {
   tick() {
     let prevY = this.posY; 
     this.posY = this.posY + 1; 
-    this.boardArr[prevY][this.posX] = "."; 
-    this.boardArr[this.posY][this.posX] = "X";
+    if (this.posY < this.height) {
+      this.boardArr[prevY][this.posX] = ".";
+      this.boardArr[this.posY][this.posX] = "X";
+    } 
   }
 
   hasFalling() {
