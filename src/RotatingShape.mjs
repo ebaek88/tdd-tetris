@@ -5,12 +5,18 @@ export class RotatingShape {
   constructor(arrInput) {
     this.size = arrInput.length;
     const arr = [];
-    for (let i = 0; i < this.size; i++) { arr.push(arrInput[i].split("")); }
+    for (let i = 0; i < this.size; i++) { 
+      arr.push(arrInput[i].split("")); 
+    }
     this.shapeArr = arr;
   }
 
   static fromString(input) {
-    return constructor(input.split("\n"));
+    const rows = input.split("\n");
+    for(let i = 0; i < rows.length; i++) {
+      rows[i] = rows[i].trim();
+    }
+    return new RotatingShape(rows);
   }
 
   toString() {
