@@ -38,14 +38,19 @@ export class Board {
   tick() {
     let prevY = this.posY; 
     this.posY = this.posY + 1; 
-    if (this.posY < this.height) {
+    if (this.posY < this.height && this.boardArr[this.posY][this.posX] === ".") {
       this.boardArr[prevY][this.posX] = ".";
       this.boardArr[this.posY][this.posX] = this.block;
     } 
   }
 
   hasFalling() {
-    return this.posY < this.height;
+    if (!this.posX && !this.posY || this.posY == this.height) { // if the block is not yet dropped or if the block reaches the bottom of the board
+      return false;
+    } else if (this.boardArr[this.posY][this.posX] !== "." && this.boardArr[this.posY][this.posX] !== this.block) { // if there is another block below
+      return false;
+    }
+    return true;
   }
 
   // string representation of the board
