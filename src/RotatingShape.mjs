@@ -1,9 +1,13 @@
 export class RotatingShape {
   size; // size of the shape in n * n
   shapeArr; // shape in array of size * size
+  numOfOrientations; // number of orientations a shape can have: can be 4, 2, 1
+  shapeSet; // a Set that contains the possible orientations of the shape
 
-  constructor(arrInput) {
+  constructor(arrInput, strInput, numOfOrientations) {
     this.size = arrInput.length;
+    this.numOfOrientations = numOfOrientations || 0;
+    this.shapeSet = new Set(strInput);
     const arr = [];
     for (let i = 0; i < this.size; i++) { 
       arr.push(arrInput[i].split("")); 
@@ -11,12 +15,12 @@ export class RotatingShape {
     this.shapeArr = arr;
   }
 
-  static fromString(input) {
+  static fromString(input, numOfOrientations) {
     const rows = input.split("\n");
     for(let i = 0; i < rows.length; i++) {
       rows[i] = rows[i].trim();
     }
-    return new RotatingShape(rows);
+    return new RotatingShape(rows, input, numOfOrientations);
   }
 
   rotateRight() {
