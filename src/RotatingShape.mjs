@@ -32,6 +32,10 @@ export class RotatingShape {
     if(nextShape) {
       return RotatingShape.fromString(nextShape, nextOrientation, this.numOfOrientations, this.strShapeMap);
     } else {
+      if (this.numOfOrientations === 1) {
+        // if it is only 1 numOfOrientations, return the same shape (making a new object since RotatingShape has to be immutable)
+        return RotatingShape.fromString(this.strShapeMap.get(this.currOrientation, this.numOfOrientations, this.strShapeMap));
+      }
       const rotatedArr = [];
       let rotatedString = "";
       for(let col = 0; col < this.size; col++) {
