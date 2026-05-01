@@ -21,11 +21,16 @@ export class RotatingShape {
 
   rotateRight() {
     const rotatedArr = [];
-    for(let i = 0; i < this.size; i++) {
-      rotatedArr.push([]);
+    let rotatedString = "";
+    for(let col = 0; col < this.size; col++) {
+      const rowArr = [];
+      for(let row = this.size - 1; row >= 0; row--) { rowArr.push(this.shapeArr[row][col]); }
+      rotatedArr.push(rowArr);
     }
-
-    this.shapeArr = rotatedArr;
+    for(let k = 0; k < rotatedArr.length; k++) { rotatedString += rotatedArr[k].join("");
+      rotatedString += (k < rotatedArr.length - 1) ? "\n" : "";
+    }
+    return RotatingShape.fromString(rotatedString);
   }
 
   toString() {
