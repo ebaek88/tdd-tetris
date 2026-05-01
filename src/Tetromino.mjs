@@ -18,4 +18,12 @@ export class Tetromino {
      0,
      2
   );
+
+  static O_SHAPE = RotatingShape.fromString(
+    `.OO
+     .OO
+     ...`,
+     0,
+     1
+  );
 }
