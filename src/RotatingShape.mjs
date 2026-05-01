@@ -24,13 +24,20 @@ export class RotatingShape {
     let rotatedString = "";
     for(let col = 0; col < this.size; col++) {
       const rowArr = [];
-      for(let row = this.size - 1; row >= 0; row--) { rowArr.push(this.shapeArr[row][col]); }
+      for(let row = this.size - 1; row >= 0; row--) { 
+        rowArr.push(this.shapeArr[row][col]); 
+      }
       rotatedArr.push(rowArr);
     }
-    for(let k = 0; k < rotatedArr.length; k++) { rotatedString += rotatedArr[k].join("");
+    for(let k = 0; k < rotatedArr.length; k++) { 
+      rotatedString += rotatedArr[k].join("");
       rotatedString += (k < rotatedArr.length - 1) ? "\n" : "";
     }
     return RotatingShape.fromString(rotatedString);
+  }
+
+  rotateLeft() {
+    
   }
 
   toString() {
