@@ -37,7 +37,16 @@ export class RotatingShape {
   }
 
   rotateLeft() {
-    
+    const rotatedArr = [];
+    let rotatedString = "";
+    for(let col = this.size - 1; col >= 0; col--) {
+      const rowArr = [];
+      for(let row = 0; row < this.size; row++) { rowArr.push(this.shapeArr[row][col]); }
+      rotatedArr.push(rowArr);
+    }
+
+    for(let k = 0; k < rotatedArr.length; k++) { rotatedString += rotatedArr[k].join(""); rotatedString += (k < rotatedArr.length - 1) ? "\n" : ""; }
+    return RotatingShape.fromString(rotatedString);
   }
 
   toString() {
