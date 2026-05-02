@@ -1,10 +1,13 @@
+import { Tetromino } from "./Tetromino.mjs";
+
 export class Board {
   width;
   height;
   boardArr;
   posX; // X-coordinate of the block. Starts from the left with 0.
   posY; // Y-coordinate of the block. Starts from the top with 0.
-  block; // shape of the block in string
+  blockPos; // coordinates of the block in number[][]
+  block; // shape of the block in Tetromino
 
   constructor(width, height) {
     this.width = width;
@@ -24,13 +27,17 @@ export class Board {
     }
   }
 
+  // transforms the block's coordinates (this.block.shapeArr) to the board's coordinates before drop
+  transformCoord(coordinates) {
+    
+  }
+
   // drop a block from the top middle position
   drop(block) {
     if (this.hasFalling()) {
       throw new Error("already falling");
     }
-    this.posX = Math.floor(this.width / 2);
-    this.posY = 0;
+    this.posX = Math.floor(this.width / 2); this.posY = 0;
     this.block = block;
     this.boardArr[this.posY][this.posX] = this.block;      
   }
